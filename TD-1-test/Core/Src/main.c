@@ -94,6 +94,10 @@ int main(void)
 
   // Allume la led V1
   //*((uint32_t *)0x40020014) |= (1 << 5);
+
+  uint32_t bouton_bleu = 0;
+  uint32_t led = 0;
+  uint8_t v = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -112,8 +116,31 @@ int main(void)
 	  */
 
 	  // Code V2 clignotte avec XOR
+	  /*
 	  *((uint32_t *)0x40020014) ^= (1 << 5);
 	  HAL_Delay(1000);
+	  */
+
+	  // Version variable
+
+	  bouton_bleu = *(volatile uint32_t *)0x40020810;
+	  led = *(volatile uint32_t *)0x40020014;
+	  v = (bouton_bleu & (1 << 13)) >> 13;
+	  if(v == 0) {
+		  led ^= (1 << 5);
+		  *(volatile uint32_t *)0x40020014 = led;
+		  HAL_DELAY(500);
+	  }
+
+
+	  // Version registre
+	  /*
+	  v = (GPIOC->IDR&(1 << 13)) >> 13;
+	  if(v == 0) {
+		  GPIOA->ODR ^= (1 << 5);
+		  HAL_DELAY(500);
+	  }
+	  */
   }
   /* USER CODE END 3 */
 }
@@ -215,11 +242,11 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin : B1_Pin */
-  GPIO_InitStruct.Pin = B1_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  /*Configure GPIO pin : PC13 */
+  GPIO_InitStruct.Pin = GPIO_PIN_13;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pin : LD2_Pin */
   GPIO_InitStruct.Pin = LD2_Pin;
