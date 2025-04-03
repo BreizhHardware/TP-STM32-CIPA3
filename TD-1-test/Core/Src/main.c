@@ -104,9 +104,15 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 	  // Code V1 clignotte version pas propre
+	  /*
 	  *((uint32_t *)0x40020014) |= (1 << 5);
 	  HAL_Delay(1000);
 	  *((uint32_t *)0x40020014) &= ~(1 << 5);
+	  HAL_Delay(1000);
+	  */
+
+	  // Code V2 clignotte avec XOR
+	  *((uint32_t *)0x40020014) ^= (1 << 5);
 	  HAL_Delay(1000);
   }
   /* USER CODE END 3 */
