@@ -268,7 +268,8 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
-	  *(volatile uint32_t *)0x40020014 ^= (1 << 5);
+	  //*(volatile uint32_t *)0x40020014 ^= (1 << 5);
+	  GPIOA->ODR ^= (1 << 5);
 }
 
 /* USER CODE END 4 */
