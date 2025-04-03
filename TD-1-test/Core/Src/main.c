@@ -129,7 +129,7 @@ int main(void)
 	  if(v == 0) {
 		  led ^= (1 << 5);
 		  *(volatile uint32_t *)0x40020014 = led;
-		  HAL_DELAY(500);
+		  HAL_Delay(500);
 	  }
 
 
@@ -138,7 +138,7 @@ int main(void)
 	  v = (GPIOC->IDR&(1 << 13)) >> 13;
 	  if(v == 0) {
 		  GPIOA->ODR ^= (1 << 5);
-		  HAL_DELAY(500);
+		  HAL_Delay(500);
 	  }
 	  */
   }
