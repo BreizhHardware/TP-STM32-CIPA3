@@ -1,0 +1,12 @@
+../Drivers/7Seg_MAX7219/max7219.c:100:6:MAX7219_Init	1
+../Drivers/7Seg_MAX7219/max7219.c:121:6:MAX7219_ShutdownStart	1
+../Drivers/7Seg_MAX7219/max7219.c:136:6:MAX7219_ShutdownStop	1
+../Drivers/7Seg_MAX7219/max7219.c:149:6:MAX7219_DisplayTestStart	1
+../Drivers/7Seg_MAX7219/max7219.c:165:6:MAX7219_DisplayTestStop	1
+../Drivers/7Seg_MAX7219/max7219.c:180:6:MAX7219_SetBrightness	1
+../Drivers/7Seg_MAX7219/max7219.c:196:6:MAX7219_Clear	2
+../Drivers/7Seg_MAX7219/max7219.c:214:6:MAX7219_DisplayChar	1
+../Drivers/7Seg_MAX7219/max7219.c:220:6:MAX7219_DisplayCharPointOff	1
+../Drivers/7Seg_MAX7219/max7219.c:225:6:MAX7219_DisplayCharPointOn	1
+../Drivers/7Seg_MAX7219/max7219.c:243:6:MAX7219_Write	1
+../Drivers/7Seg_MAX7219/max7219.c:262:13:MAX7219_SendByte	1
