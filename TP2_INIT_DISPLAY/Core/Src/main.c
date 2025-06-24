@@ -18,10 +18,11 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "max7219.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "max7219.h"
+#define V2
 
 /* USER CODE END Includes */
 
@@ -52,11 +53,24 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_SPI1_Init(void);
 /* USER CODE BEGIN PFP */
+void affiche (uint8_t nombre);
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void affiche(uint8_t nombre) {
+    uint8_t compt_uni;
+    uint8_t compt_diz;
+
+    compt_uni = nombre % 10;
+    compt_diz = nombre / 10;
+
+    MAX7219_DisplayChar(1, compt_diz);
+    MAX7219_DisplayChar(2, compt_uni);
+    MAX7219_DisplayChar(3, compt_diz);
+    MAX7219_DisplayChar(4, compt_uni);
+}
 
 /* USER CODE END 0 */
 
@@ -99,13 +113,24 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   MAX7219_Clear();
+  uint8_t compteur = 0;
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+#ifdef V1
 	  MAX7219_DisplayChar(1, 3);
 	  MAX7219_DisplayChar(2, 5);
+#endif
+#ifdef V2
+	  affiche(compteur);
+	  compteur++;
+	  if (compteur >= 100) {
+		  compteur = 0;
+	  }
+	  HAL_Delay(500);
+#endif
   }
   /* USER CODE END 3 */
 }
