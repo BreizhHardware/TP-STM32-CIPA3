@@ -55,12 +55,52 @@ static void MX_GPIO_Init(void);
 static void MX_SPI1_Init(void);
 static void MX_TIM3_Init(void);
 /* USER CODE BEGIN PFP */
+void DO();
+void RE();
+void MI();
+void FA();
+void SOL();
+void LA();
+void SI();
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void DO() {
+	MAX7219_DisplayChar(4, 0);
+	TIM3->PSC = ((16000000/524)/1600) - 1;
+}
 
+void RE() {
+	MAX7219_DisplayChar(4, 1);
+	TIM3->PSC = ((16000000/587)/1600) - 1;
+}
+
+void MI() {
+	MAX7219_DisplayChar(4, 2);
+	TIM3->PSC = ((16000000/662)/1600) - 1;
+}
+
+void FA() {
+	MAX7219_DisplayChar(4, 3);
+	TIM3->PSC = ((16000000/701)/1600) - 1;
+}
+
+void SOL() {
+	MAX7219_DisplayChar(4, 4);
+	TIM3->PSC = ((16000000/787)/1600) - 1;
+}
+
+void LA() {
+	MAX7219_DisplayChar(4, 5);
+	TIM3->PSC = ((16000000/878)/1600) - 1;
+}
+
+void SI() {
+	MAX7219_DisplayChar(4, 6);
+	TIM3->PSC = ((16000000/1004)/1600) - 1;
+}
 
 /* USER CODE END 0 */
 
@@ -111,32 +151,25 @@ int main(void)
     /* USER CODE BEGIN 3 */
 	for (int i = 0; i < 7; i++) {
 		if (i == 0) { // DO
-			MAX7219_DisplayChar(4, i);
-			TIM3->PSC = ((16000000/524)/1600) - 1;
+			DO();
 			HAL_Delay(500);
 	     } else if (i == 1) { // RE
-	        MAX7219_DisplayChar(4, i);
-	        TIM3->PSC = ((16000000/587)/1600) - 1;
+	        RE();
 	        HAL_Delay(500);
 	     } else if (i == 2) { // MI
-	       MAX7219_DisplayChar(4, i);
-	       TIM3->PSC = ((16000000/662)/1600) - 1;
+	       MI();
 	       HAL_Delay(500);
 	     } else if (i == 3) { // FA
-	       MAX7219_DisplayChar(4, i);
-	       TIM3->PSC = ((16000000/701)/1600) - 1;
+	       FA();
 	       HAL_Delay(500);
 	     } else if (i == 4) { // SOL
-	       MAX7219_DisplayChar(4, i);
-	       TIM3->PSC = ((16000000/787)/1600) - 1;
+	       SOL();
 	       HAL_Delay(500);
 	     } else if (i == 5) { // LA
-	        MAX7219_DisplayChar(4, i);
-	        TIM3->PSC = ((16000000/878)/1600) - 1;
+	        LA();
 	        HAL_Delay(500);
 	     } else if (i == 6) { // SI
-	        MAX7219_DisplayChar(4, i);
-	        TIM3->PSC = ((16000000/1004)/1600) - 1;
+	        SI();
 	        HAL_Delay(500);
 	     }
 	}
