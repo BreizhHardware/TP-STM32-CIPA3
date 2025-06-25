@@ -46,7 +46,11 @@ SPI_HandleTypeDef hspi1;
 TIM_HandleTypeDef htim3;
 
 /* USER CODE BEGIN PV */
-const uint8_t tab_music[] = {4, 4, 4, 5, 6, 6, 5, 5, 4, 6, 5, 5, 4, 255};
+// Truc du prof
+//const uint8_t tab_music[] = {4, 4, 4, 5, 6, 6, 5, 5, 4, 6, 5, 5, 4, 255};
+
+// Bambino
+const uint8_t tab_music[] = {6, 6, 1, 1, 6, 6, 7, 9, 8, 9, 9, 8, 9};
 
 /* USER CODE END PV */
 
@@ -137,8 +141,17 @@ int main(void)
 	          case 6:
 	        	  note(1004, tab_music[i]);
 	              break;
+	          case 7: // LA Diese
+	        	  note(932, tab_music[i]);
+	        	  break;
+	          case 8: // RE gamme 5
+	          	  note(1175, tab_music[i]);
+	          	  break;
+	          case 9: // MI Diese gamme 5
+	          	  note(1109, tab_music[i]);
+	          	  break;
 	       }
-	       HAL_Delay(500);
+	       HAL_Delay(250);
 	  }
 
  }
