@@ -77,6 +77,8 @@ void affiche_nombre(uint32_t nombre, uint8_t col, uint8_t ligne) {
     displayChar_TFT(col + 12, ligne, cen + 0x30, ST7735_YELLOW, ST7735_BLACK, 2);
     displayChar_TFT(col + 24, ligne, diz + 0x30, ST7735_YELLOW, ST7735_BLACK, 2);
     displayChar_TFT(col + 36, ligne, uni + 0x30, ST7735_YELLOW, ST7735_BLACK, 2);
+    displayChar_TFT(col + 48, ligne, 'm', ST7735_YELLOW, ST7735_BLACK, 2);
+    displayChar_TFT(col + 60, ligne, 'V', ST7735_YELLOW, ST7735_BLACK, 2);
 }
 
 
@@ -131,7 +133,8 @@ int main(void)
 	  HAL_ADC_PollForConversion(&hadc, 1000);
 	  uint32_t value = HAL_ADC_GetValue(&hadc);
 	  HAL_ADC_Stop(&hadc);
-	affiche_nombre(value, 10, 80);
+	  uint32_t milivolt = (value / 4096.0) * 3300;
+	affiche_nombre(milivolt, 10, 80);
 
   }
 
