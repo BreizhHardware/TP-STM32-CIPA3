@@ -77,8 +77,8 @@ void affiche_nombre(uint32_t nombre, uint8_t col, uint8_t ligne) {
     displayChar_TFT(col + 12, ligne, cen + 0x30, ST7735_YELLOW, ST7735_BLACK, 2);
     displayChar_TFT(col + 24, ligne, diz + 0x30, ST7735_YELLOW, ST7735_BLACK, 2);
     displayChar_TFT(col + 36, ligne, uni + 0x30, ST7735_YELLOW, ST7735_BLACK, 2);
-    displayChar_TFT(col + 48, ligne, 'm', ST7735_YELLOW, ST7735_BLACK, 2);
-    displayChar_TFT(col + 60, ligne, 'V', ST7735_YELLOW, ST7735_BLACK, 2);
+    displayChar_TFT(col + 48, ligne, ' ', ST7735_YELLOW, ST7735_BLACK, 2);
+    displayChar_TFT(col + 60, ligne, 'C', ST7735_YELLOW, ST7735_BLACK, 2);
 }
 
 
@@ -124,7 +124,11 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  const uint16_t TS_CAL1 = *(uint16_t*)0x1FF800FA;
+  const uint16_t TS_CAL2 = *(uint16_t*)0x1FF800FE;
   const uint16_t VREFINT_CAL = *(uint16_t*)0x1FF800F8;
+  const int32_t vrefint_value = 1210;
+  float vdda_div_3 = (float)VREFINT_CAL / vrefint_value;
   while (1)
   {
     /* USER CODE END WHILE */
@@ -132,11 +136,10 @@ int main(void)
     /* USER CODE BEGIN 3 */
 	  HAL_ADC_Start(&hadc);
 	  HAL_ADC_PollForConversion(&hadc, 1000);
-	  uint32_t value = HAL_ADC_GetValue(&hadc);
+	  uint32_t temp_value = (HAL_ADC_GetValue(&hadc) / 4096.0) * 3300;
 	  HAL_ADC_Stop(&hadc);
-	  uint32_t milivolt = (value / 4096.0) * 3300;
-	  affiche_nombre(milivolt, 10, 80);
-
+	  float temperature = 80 * (temp_value * vdda_div_3 - TS_CAL1) / (TS_CAL2 - TS_CAL1) + 30;
+	  affiche_nombre((uint32_t)(temperature), 10, 80);
   }
 
   /* USER CODE END 3 */
@@ -224,7 +227,7 @@ static void MX_ADC_Init(void)
 
   /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
   */
-  sConfig.Channel = ADC_CHANNEL_VREFINT;
+  sConfig.Channel = ADC_CHANNEL_TEMPSENSOR;
   sConfig.Rank = ADC_REGULAR_RANK_1;
   sConfig.SamplingTime = ADC_SAMPLETIME_4CYCLES;
   if (HAL_ADC_ConfigChannel(&hadc, &sConfig) != HAL_OK)
