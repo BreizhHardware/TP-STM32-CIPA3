@@ -36,34 +36,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := TP5_VOLT
+BUILD_ARTIFACT_NAME := TP5_TEMP
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-TP5_VOLT.elf \
+TP5_TEMP.elf \
 
 MAP_FILES += \
-TP5_VOLT.map \
+TP5_TEMP.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-TP5_VOLT.list \
+TP5_TEMP.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: TP5_VOLT.elf secondary-outputs
+main-build: TP5_TEMP.elf secondary-outputs
 
 # Tool invocations
-TP5_VOLT.elf TP5_VOLT.map: $(OBJS) $(USER_OBJS) /Users/felixmarquet/Nextcloud/Programation/STM32/TP5_VOLT/STM32L152RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "TP5_VOLT.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"/Users/felixmarquet/Nextcloud/Programation/STM32/TP5_VOLT/STM32L152RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TP5_VOLT.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+TP5_TEMP.elf TP5_TEMP.map: $(OBJS) $(USER_OBJS) /Users/felixmarquet/Nextcloud/Programation/STM32/TP5_TEMP/STM32L152RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "TP5_TEMP.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"/Users/felixmarquet/Nextcloud/Programation/STM32/TP5_TEMP/STM32L152RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TP5_TEMP.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -72,14 +72,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-TP5_VOLT.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "TP5_VOLT.list"
+TP5_TEMP.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "TP5_TEMP.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) TP5_VOLT.elf TP5_VOLT.list TP5_VOLT.map default.size.stdout
+	-$(RM) TP5_TEMP.elf TP5_TEMP.list TP5_TEMP.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)

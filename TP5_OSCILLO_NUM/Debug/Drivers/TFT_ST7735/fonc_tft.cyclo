@@ -1,0 +1,12 @@
+../Drivers/TFT_ST7735/fonc_tft.c:566:6:Write_SPI	1
+../Drivers/TFT_ST7735/fonc_tft.c:586:6:writecommand	1
+../Drivers/TFT_ST7735/fonc_tft.c:617:6:writedata	1
+../Drivers/TFT_ST7735/fonc_tft.c:649:6:commandList	5
+../Drivers/TFT_ST7735/fonc_tft.c:683:6:setAddrWindow	1
+../Drivers/TFT_ST7735/fonc_tft.c:708:6:init_TFT	1
+../Drivers/TFT_ST7735/fonc_tft.c:768:6:drawPixel_TFT	3
+../Drivers/TFT_ST7735/fonc_tft.c:820:6:fillRect_TFT	7
+../Drivers/TFT_ST7735/fonc_tft.c:884:6:fillScreen_TFT	1
+../Drivers/TFT_ST7735/fonc_tft.c:901:6:displayChar_TFT	12
+../Drivers/TFT_ST7735/fonc_tft.c:954:6:drawVLine_TFT	2
+../Drivers/TFT_ST7735/fonc_tft.c:1009:6:displayLogo_TFT	11
