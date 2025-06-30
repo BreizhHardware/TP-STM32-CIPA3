@@ -3048,20 +3048,20 @@ LOAD /Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.id
  .debug_line    0x0000557b     0x1c1a ./Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_spi.o
  .debug_line    0x00007195      0xab2 ./Drivers/TFT_ST7735/fonc_tft.o
 
-.debug_str      0x00000000    0x84a13
- .debug_str     0x00000000    0x84a13 ./Core/Src/main.o
+.debug_str      0x00000000    0x849cb
+ .debug_str     0x00000000    0x849cb ./Core/Src/main.o
                               0x8305d (size before relaxing)
- .debug_str     0x00084a13    0x7fa0c ./Core/Src/stm32l1xx_hal_msp.o
- .debug_str     0x00084a13    0x7f5a3 ./Core/Src/stm32l1xx_it.o
- .debug_str     0x00084a13    0x7f5f4 ./Core/Src/system_stm32l1xx.o
- .debug_str     0x00084a13       0x8c ./Core/Startup/startup_stm32l152retx.o
- .debug_str     0x00084a13    0x7fb50 ./Drivers/7Seg_MAX7219/max7219.o
- .debug_str     0x00084a13    0x7fd1c ./Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal.o
- .debug_str     0x00084a13    0x7fe28 ./Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_cortex.o
- .debug_str     0x00084a13    0x7f787 ./Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_gpio.o
- .debug_str     0x00084a13    0x7fab0 ./Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_rcc.o
- .debug_str     0x00084a13    0x7ff16 ./Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_spi.o
- .debug_str     0x00084a13    0x7ffc8 ./Drivers/TFT_ST7735/fonc_tft.o
+ .debug_str     0x000849cb    0x7fa0c ./Core/Src/stm32l1xx_hal_msp.o
+ .debug_str     0x000849cb    0x7f5a3 ./Core/Src/stm32l1xx_it.o
+ .debug_str     0x000849cb    0x7f5f4 ./Core/Src/system_stm32l1xx.o
+ .debug_str     0x000849cb       0x88 ./Core/Startup/startup_stm32l152retx.o
+ .debug_str     0x000849cb    0x7fb50 ./Drivers/7Seg_MAX7219/max7219.o
+ .debug_str     0x000849cb    0x7fd1c ./Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal.o
+ .debug_str     0x000849cb    0x7fe28 ./Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_cortex.o
+ .debug_str     0x000849cb    0x7f787 ./Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_gpio.o
+ .debug_str     0x000849cb    0x7fab0 ./Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_rcc.o
+ .debug_str     0x000849cb    0x7ff16 ./Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_spi.o
+ .debug_str     0x000849cb    0x7ffc8 ./Drivers/TFT_ST7735/fonc_tft.o
 
 .comment        0x00000000       0x43
  .comment       0x00000000       0x43 ./Core/Src/main.o
@@ -3099,6 +3099,6 @@ LOAD /Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.id
  .debug_frame   0x00001c44       0x34 /Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.macos64_1.0.0.202411102158/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7-m/nofp/libgcc.a(_udivmoddi4.o)
 
 .debug_line_str
-                0x00000000       0x70
+                0x00000000       0x6c
  .debug_line_str
-                0x00000000       0x70 ./Core/Startup/startup_stm32l152retx.o
+                0x00000000       0x6c ./Core/Startup/startup_stm32l152retx.o

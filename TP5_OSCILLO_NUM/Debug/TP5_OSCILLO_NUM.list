@@ -1278,8 +1278,8 @@ int main(void)
 		  drawAxes();
  8000e42:	f7ff ff4c 	bl	8000cde <drawAxes>
 	   }
-	  HAL_Delay(100);
- 8000e46:	2064      	movs	r0, #100	@ 0x64
+	  HAL_Delay(10);
+ 8000e46:	200a      	movs	r0, #10
  8000e48:	f000 fb80 	bl	800154c <HAL_Delay>
   {
  8000e4c:	e7af      	b.n	8000dae <main+0x2e>

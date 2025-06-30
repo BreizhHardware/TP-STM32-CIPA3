@@ -145,7 +145,7 @@ int main(void)
 		  fillScreen_TFT(ST7735_BLACK);
 		  drawAxes();
 	   }
-	  HAL_Delay(100);
+	  HAL_Delay(10);
   }
 
   /* USER CODE END 3 */
