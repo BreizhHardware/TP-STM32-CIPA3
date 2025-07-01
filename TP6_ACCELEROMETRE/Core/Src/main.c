@@ -96,13 +96,17 @@ int main(void)
   uint8_t adress[1] = {0x0F};
   uint8_t rData[1];
 */
-  uint8_t adresse[1] = {0x2D} ;
+  uint8_t adresse[1] = {0x10} ;
   uint8_t rData[1];
   uint8_t wData[1];
   wData[0] = (1<<7);
   uint8_t data[2];
   memcpy(data, adresse, 1);
   memcpy(data+1, wData, 1);
+
+  HAL_I2C_Master_Transmit(&hi2c1, 0xD6, data, 2, 100);
+  HAL_Delay(100);
+  adresse[0] = 0x2D;
 
 
   /* USER CODE END 2 */
