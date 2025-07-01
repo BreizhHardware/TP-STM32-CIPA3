@@ -57,6 +57,9 @@ static void MX_I2C1_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+uint8_t Z_VALUE = 0;
+uint8_t Y_VALUE = 0;
+uint8_t X_VALUE = 0;
 
 /* USER CODE END 0 */
 
@@ -106,7 +109,7 @@ int main(void)
 
   HAL_I2C_Master_Transmit(&hi2c1, 0xD6, data, 2, 100);
   HAL_Delay(100);
-  adresse[0] = 0x2D;
+
 
 
   /* USER CODE END 2 */
@@ -122,6 +125,7 @@ int main(void)
 	  HAL_I2C_Master_Transmit(&hi2c1, 0xD6, adress, 1, 100);
 	  HAL_I2C_Master_Receive(&hi2c1, 0xD6, rData, 1, 100);
 */
+	  adresse[0] = 0x2D;
 	  HAL_I2C_Master_Transmit(&hi2c1, 0xD6, adresse, 1, 100);
 	  HAL_I2C_Master_Receive(&hi2c1, 0xD6, rData, 1, 100);
 
@@ -130,6 +134,20 @@ int main(void)
 	  } else if((rData[0]>128) && (rData[0]<=255)){
 		  GPIOA -> ODR &= ~(1<<5);
 	  }
+
+	  Z_VALUE = rData[0];
+
+	  adresse[0] = 0x29;
+	  HAL_I2C_Master_Transmit(&hi2c1, 0xD6, adresse, 1, 100);
+	  HAL_I2C_Master_Receive(&hi2c1, 0xD6, rData, 1, 100);
+
+	  X_VALUE = rData[0];
+
+	  adresse[0] = 0x2B;
+	  HAL_I2C_Master_Transmit(&hi2c1, 0xD6, adresse, 1, 100);
+	  HAL_I2C_Master_Receive(&hi2c1, 0xD6, rData, 1, 100);
+
+	  Y_VALUE = rData[0];
 
 	  HAL_Delay(100);
   }
